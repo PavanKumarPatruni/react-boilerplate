@@ -1,0 +1,9 @@
+/node_modules
+
+# Production
+/build
+
+# Testing
+reports/
+**/coverage
+test-report.xml*
