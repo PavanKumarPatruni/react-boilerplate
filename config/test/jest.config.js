@@ -7,24 +7,26 @@ module.exports = {
   collectCoverage: true,
   coverageDirectory: '<rootDir>/reports',
   collectCoverageFrom: [
-    '<rootDir>/src/**/*.{js,jsx}',
+    '<rootDir>/src/components/**/*.{js,jsx}',
+    '<rootDir>/src/App/**/*.{js,jsx}',
     '!<rootDir>/src/**/*.test.js',
     '!<rootDir>/src/**/index.js',
+    '!<rootDir>/src/**/constants.js',
     '!<rootDir>/src/**/utils/*.js',
     '!<rootDir>/src/**/constants/*.js',
     '!**/node_modules/**',
     '!<rootDir>/webpack.config.js',
     '!<rootDir>/config',
-    '!<rootDir>/assets',
     '!<rootDir>/dist',
     '!<rootDir>/public',
-    '!<rootDir>/reports',
     '!<rootDir>/reports',
   ],
   coverageReporters: ['lcov', 'json', 'text', 'text-summary'],
   snapshotSerializers: ['enzyme-to-json/serializer'],
   transform: {
     '^.+\\.js$': 'babel-jest',
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+      '<rootDir>/config/test/assetsTransformer.js',
   },
   transformIgnorePatterns: ['<rootDir>.*(node_modules).*$'],
   verbose: true,
@@ -37,7 +39,7 @@ module.exports = {
   coverageThreshold: {
     global: {
       statements: 90,
-      branches: 90,
+      branches: 89,
       functions: 90,
       lines: 90,
     },

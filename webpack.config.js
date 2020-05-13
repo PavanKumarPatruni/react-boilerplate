@@ -1,13 +1,22 @@
-const autoprefixer = require('autoprefixer');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  devtool: 'inline-source-map',
-  entry: './src/index.js',
+  entry: {
+    main: './src/index.js',
+  },
   output: {
+    filename: '[name].[hash].js',
     path: path.join(__dirname, '/dist'),
+  },
+  mode: 'production',
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      minSize: 500,
+      automaticNameDelimiter: '_',
+    },
   },
   module: {
     rules: [
@@ -35,20 +44,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader',
-          {
-            loader: `postcss-loader`,
-            options: {
-              options: {},
-              plugins: () => {
-                autoprefixer({ browsers: ['last 2 versions'] });
-              },
-            },
-          },
-        ],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
   },
@@ -56,10 +52,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html',
       filename: './index.html',
+      chunks: ['main', 'vendors_main'],
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css',
+      filename: '[name].[hash].css',
     }),
   ],
 };

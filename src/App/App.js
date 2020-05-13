@@ -1,13 +1,15 @@
 import React from 'react';
 
-import Icon from '../../../assets/images/bg.png';
+import Header from '../components/Header';
 
 import './App.scss';
+
+import Icon from '../assets/images/bg.png';
 
 const App = () => {
   return (
     <div>
-      <h1>React App</h1>
+      <Header />
       <img src={Icon} alt="ICON" />
     </div>
   );
