@@ -108,11 +108,4 @@ npm run build
 
 
 ## Contributors
-Here (https://github.com/bharatpe/react-web-boilerplate/graphs/contributors)
-
-## Maintainers
-Frontend TM
-
-
-## License
-MIT @[bharatpe](#)
+Here (https://github.com/PavanKumarPatruni)
